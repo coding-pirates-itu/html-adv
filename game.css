@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(2, 8, 49);
+    color: antiquewhite;
+}
+
+h1 {
+    text-align: center;
+}
+
+#info-block {
+    float: right;
+}
+
+#location-block {
+    width: 100%;
+    height: 80vh;
+    border-width: 0px;
+}
