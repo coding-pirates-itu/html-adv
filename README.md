@@ -1,2 +1,2 @@
 # html-adv
-A simple static adventure game
+A simple static adventure game.
