@@ -1,8 +1,17 @@
-var stepNo = 1;
 var stepId = 'step-count';
 var inventoryId = 'inventory';
 var frameId = 'location-block';
+var initPage = 'loc-01.01-start.html';
+var stepNo = 1;
 var state = {}
+
+
+function init() {
+    // Zero, because then takeStep() will be called
+    stepNo = 0;
+    state = {};
+    updateState();
+}
 
 
 function takeStep() {
@@ -11,8 +20,18 @@ function takeStep() {
 }
 
 
+function updateState() {
+    document.getElementById(inventoryId).textContent = Object.keys(state);
+}
+
+
 function postLinkToParent(goToLink) {
     window.top.postMessage({ message: 'goto', goTo: goToLink }, '*');
+}
+
+
+function postRestartToParent() {
+    window.top.postMessage({ message: 'init', goTo: initPage }, '*');
 }
 
 
@@ -32,7 +51,7 @@ window.onmessage = function(e) {
 
     if (message === 'take') {
         state[e.data.item] = 1;
-        document.getElementById(inventoryId).textContent = Object.keys(state);
+        updateState();
         message = 'goto';
     }
 
@@ -42,6 +61,11 @@ window.onmessage = function(e) {
         } else {
             link = e.data.falseLink;
         }
+        message = 'goto';
+    }
+
+    if (message === 'init') {
+        init();
         message = 'goto';
     }
 

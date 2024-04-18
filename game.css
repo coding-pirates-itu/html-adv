@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(2, 8, 49);
+    background-color: rgb(6, 9, 24);
     color: antiquewhite;
 }
 
@@ -15,4 +15,15 @@ h1 {
     width: 100%;
     height: 80vh;
     border-width: 0px;
+}
+
+h2 {
+    font-style: italic;
+}
+
+button {
+    padding: 0.5rem;
+    font-size: 1.12rem;
+    background-color: rgb(128, 0, 47);
+    color: beige;
 }
