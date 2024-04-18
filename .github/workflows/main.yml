@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: htmltest-action
+      uses: wjdp/htmltest-action@v0.13.0-rc1
+      with:
+        path: ${{ github.workspace }}
+        skip_external: true
+    
+    - name: HTML5 Validator
+      uses: Cyb3r-Jak3/html5validator-action@v7.1.0
+      with:
+        root: ${{ github.workspace }}
+        css: true
+    
+    - name: FTP Deployer
+      uses: sand4rt/ftp-deployer@v1.3
+      with:
+        sftp: true
+        host: ssh.nikitins.dk
+        port: 22
+        username: ${{ secrets.SftpUserName }}
+        password: ${{ secrets.SftpPassword }}
+        remote_folder: ${{ secrets.SftpDirectory }}
+        local_folder: ${{ github.workspace }}
+        exclude: '[".git*/**", "tmp/**", "README.md"]'
+        cleanup: true
