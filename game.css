@@ -27,3 +27,8 @@ button {
     background-color: rgb(128, 0, 47);
     color: beige;
 }
+
+.illustration {
+    width: 100vw;
+    max-width: 400px;
+}
