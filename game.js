@@ -1,16 +1,21 @@
 var stepId = 'step-count';
 var inventoryId = 'inventory';
 var frameId = 'location-block';
-var initPage = 'loc-01.01-start.html';
+var initPage = '/loc/loc-01.01-start.html';
 var stepNo = 1;
-var state = {}
+var inventory = {}
+
+
+function resizeIframe(obj) {
+    obj.style.height = (obj.contentWindow.document.documentElement.scrollHeight + 5) + 'px';
+}
 
 
 function init() {
     // Zero, because then takeStep() will be called
     stepNo = 0;
-    state = {};
-    updateState();
+    inventory = {};
+    updateInventory();
 }
 
 
@@ -20,23 +25,23 @@ function takeStep() {
 }
 
 
-function updateState() {
-    document.getElementById(inventoryId).textContent = Object.keys(state);
+function updateInventory() {
+    document.getElementById(inventoryId).textContent = Object.keys(inventory);
 }
 
 
-function postLinkToParent(goToLink) {
+function postGoto(goToLink) {
     window.top.postMessage({ message: 'goto', goTo: goToLink }, '*');
 }
 
 
 function postRestartToParent() {
-    window.top.postMessage({ message: 'init', goTo: initPage }, '*');
+    window.top.postMessage({ message: 'init' }, '*');
 }
 
 
-function postTakeToParent(item, goToLink) {
-    window.top.postMessage({ message: 'take', goTo: goToLink, item: item }, '*');
+function postTake(item) {
+    window.top.postMessage({ message: 'take', item: item }, '*');
 }
 
 
@@ -50,13 +55,12 @@ window.onmessage = function(e) {
     link = e.data.goTo;
 
     if (message === 'take') {
-        state[e.data.item] = 1;
-        updateState();
-        message = 'goto';
+        inventory[e.data.item] = 1;
+        updateInventory();
     }
 
     if (message === 'condition') {
-        if (state[e.data.item] != null) {
+        if (inventory[e.data.item] != null) {
             link = e.data.trueLink;
         } else {
             link = e.data.falseLink;
@@ -67,6 +71,7 @@ window.onmessage = function(e) {
     if (message === 'init') {
         init();
         message = 'goto';
+        link = initPage;
     }
 
     if (message === 'goto') {

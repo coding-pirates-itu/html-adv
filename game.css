@@ -3,12 +3,19 @@ body {
     color: antiquewhite;
 }
 
+#header {
+    position: relative;
+}
+
 h1 {
     text-align: center;
+    margin-bottom: 5px;
 }
 
 #info-block {
-    float: right;
+    top: 0;
+    right: 0;
+    position: absolute;
 }
 
 #location-block {

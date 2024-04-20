@@ -4,20 +4,22 @@
     <title>Den Forsvundne Konge</title>
     <meta name="viewport" content="width=device-width"/>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="./game.css"/>
-    <script src="./game.js"></script>
+    <link rel="stylesheet" href="/game.css"/>
+    <script src="/game.js"></script>
 </head>
 <body>
-    <h1>Den Forsvundne Konge</h1>
-    <div id="info-block">
-        <div>
-            Skridt: <span id="step-count">1</span>
-        </div>
-        <div>
-            Taske: <span id="inventory"></span>
+    <div id="header">
+        <h1>Den Forsvundne Konge</h1>
+        <div id="info-block">
+            <div>
+                Skridt: <span id="step-count">1</span>
+            </div>
+            <div>
+                Taske: <span id="inventory"></span>
+            </div>
         </div>
     </div>
 
-    <iframe id="location-block" title="Locations" src="loc-01.01-start.html"></iframe>
+    <iframe id="location-block" title="Locations" onload="resizeIframe(this)" src="/loc/loc-01.01-start.html"></iframe>
 </body>
 </html>

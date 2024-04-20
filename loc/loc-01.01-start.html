@@ -4,13 +4,13 @@
     <title>Den Forsvundne Konge</title>
     <meta name="viewport" content="width=device-width"/>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="./game.css"/>
-    <script src="./game.js"></script>
+    <link rel="stylesheet" href="/game.css"/>
+    <script src="/game.js"></script>
 </head>
 <body>
     <h2>Hjemme</h2>
 
-    <img class="illustration" alt="home" src="img/img-01-home.webp"/>
+    <img class="illustration" alt="home" src="/img/img-01-home-closed.webp"/>
 
     <p>
         Du vågner op til lyden af alarmer i det fjerne.
@@ -18,7 +18,7 @@
         Hastigt klæder du dig på og...
     </p>
 
-    <button onclick="postLinkToParent('loc-01.03-hall-square.html')">skynder dig ud for at se, hvad der sker</button>
-    <button onclick="postTakeToParent('sværd', 'loc-01.02-sword.html')">tjek din kiste</button>
+    <button onclick="postGoto('/loc/loc-01.03-town-square.html')">skynder dig ud for at se, hvad der sker</button>
+    <button onclick="postGoto('/loc/loc-01.02-sword.html')">tjek din kiste</button>
 </body>
 </html>
