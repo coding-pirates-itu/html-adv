@@ -1,7 +1,7 @@
 var stepId = 'step-count';
 var inventoryId = 'inventory';
 var frameId = 'location-block';
-var initPage = 'loc/loc-01.01-start.html';
+var initPage = 'loc-01.01-start.html';
 var stepNo = 1;
 var inventory = {}
 
